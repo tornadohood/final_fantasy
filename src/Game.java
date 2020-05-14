@@ -169,9 +169,9 @@ public class Game {
 				"為了保護星球挺身而出的反神羅組織「雪崩」爆發激烈衝突。\n\n"
 				+ "前方有傭兵....");
 		
-		choice1.setText("Talk to the guard");
-		choice2.setText("Attac the guard");
-		choice3.setText("Leave");
+		choice1.setText("和傭兵聊天");
+		choice2.setText("攻擊傭兵");
+		choice3.setText("離開");
 		choice4.setText("");
 	}
 	
