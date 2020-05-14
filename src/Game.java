@@ -21,7 +21,7 @@ public class Game {
 	Font normalFont = new Font("Times New Roman", Font.PLAIN, 28);
 	JButton starButton, choice1, choice2, choice3, choice4;
 	JTextArea mainTextArea;
-	int playerHP, monsterHP;
+	int playerHP, monsterHP, silverRing;
 	String weapon, position;
 	
 	TitleScreenHandler tsHandler = new TitleScreenHandler();
@@ -265,12 +265,35 @@ public class Game {
 		
 		int monsterDamage = 0;
 		
-		monsterDamage = new java.util.Random().nextInt(4);
+		monsterDamage = new java.util.Random().nextInt(6);
 		
 		mainTextArea.setText("The monster attacked you and gave " + monsterDamage + "damage!");
 		
 		playerHP = playerHP - monsterDamage;
 		hpLabelNumber.setText(""+playerHP);
+		
+		choice1.setText(">");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+	}
+	
+	public void win() {
+		position = "win";
+		
+		mainTextArea.setText("You defeated the monster!\nThe onster dropped a ring!\n\n(You obtained a Silver Ring)");
+		
+		silverRing =1;
+		
+		choice1.setText("Go east");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+	}
+	public void lose() {
+		position = "lose";
+		
+		mainTextArea.setText("You are dead!\n\n<GAME OVER>");
 		
 		choice1.setText(">");
 		choice2.setText("");
@@ -338,13 +361,31 @@ public class Game {
 				break;
 			case "playerAttack":
 				switch(yourChoice) {
-				case "c1": monsterAttack(); break;			
-				}
-			case "monsterAttack":
-				switch(yourChoice) {
-				case "c1": fight(); break;
+				case "c1": 
+					if(monsterHP<1) {
+						win();
+					}
+					else {
+					monsterAttack();			
 				}
 				break;
+				}
+				break;
+			case "monsterAttack":
+				switch(yourChoice) {
+				case "c1": 
+					if(playerHP<1) {
+						lose();
+					}
+					else
+						fight(); 
+				}
+				break;
+			case "win":
+				switch(yourChoice) {
+				case "c1": crossRoad();
+				
+				}
 			}
 		}
 	}
