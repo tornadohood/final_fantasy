@@ -44,7 +44,7 @@ public class Game {
 		titleNamePanel = new JPanel();
 		titleNamePanel.setBounds(100, 100, 600, 150);
 		titleNamePanel.setBackground(Color.black);
-		titleNameLabel = new JLabel("最終幻想VII");
+		titleNameLabel = new JLabel("最終幻想VIII");
 		titleNameLabel.setForeground(Color.white);
 		titleNameLabel.setFont(titleFont);
 		
