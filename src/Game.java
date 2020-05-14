@@ -248,7 +248,7 @@ public class Game {
 			playerDamage = new java.util.Random().nextInt(3);
 		}
 		else if(weapon.contentEquals("Long Sword")) {
-			playerDamage = new java.util.Random().nextInt(8);
+			playerDamage = new java.util.Random().nextInt(12);
 		}
 		
 		mainTextArea.setText("You attaced the monster and gave " + playerDamage + "damage!");
@@ -295,10 +295,28 @@ public class Game {
 		
 		mainTextArea.setText("You are dead!\n\n<GAME OVER>");
 		
-		choice1.setText(">");
+		choice1.setText("");
 		choice2.setText("");
 		choice3.setText("");
 		choice4.setText("");
+		choice1.setVisible(false);
+		choice2.setVisible(false);
+		choice3.setVisible(false);
+		choice4.setVisible(false);
+	}
+	public void ending() {
+		position = "ending";
+		
+		mainTextArea.setText("Guard: oh you killed that goblin!?\nThank you so much. You are true hero!\nWelcome to our town!\n\n <The End>");
+		
+		choice1.setText("");
+		choice2.setText("");
+		choice3.setText("");
+		choice4.setText("");
+		choice1.setVisible(false);
+		choice2.setVisible(false);
+		choice3.setVisible(false);
+		choice4.setVisible(false);
 	}
 	
 	public class TitleScreenHandler implements ActionListener{
@@ -316,7 +334,14 @@ public class Game {
 			switch(position) {
 			case "townGate":
 				switch(yourChoice) {
-				case "c1": talkGuard(); break;
+				case "c1": 
+					if(silverRing==1) {
+						ending();
+					}
+					else {
+						talkGuard();
+					}
+					break;
 				case "c2": attackGuard(); break;
 				case "c3": crossRoad(); break;
 				}
